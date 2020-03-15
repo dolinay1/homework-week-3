@@ -42,9 +42,10 @@ function generatePassword() {
   if (passwordSpecial === "y") {
     passwordSet += specialCharacters;
   }
-  else {
-    return("Error! Please refresh page!")
+  else if(passwordSet === "") {
+    return ("Error! Please refresh page!")
   }
+ 
 
   // Parses the values from the user sections above into the desired "password" using the password length value inputed at the start
   passwordLength = passwordValue;
