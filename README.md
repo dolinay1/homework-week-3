@@ -1,13 +1,15 @@
-Project Title - Password Generator
+#Project Title - Password Generator
 
-Description - 
+#Description - 
   The Password Generator application is used for creating a specific password for the user by allowing them to choose the
 criteria through inputs. The application is initialized by the user clicking the "generate button" in the application. The user may choose a length for the password ranging from 8 to 128 characters. The user may also choose whether the password includes lowercase characters, uppercase characters, numeric characters, and special characters through a series of prompts. Finally the password is displayed on page in a to a text field.
 
-Technologies used -
+#Technologies used -
   Javascript, HTML, CSS
 
-
+#Screenshots -
+![Screenshot 1](Assets/img/Password-Generator-Screenshot.jpg)
+![Screenshot 1](Assets/img/Password-Generator-Screenshot-2.jpg)
 
 
 
