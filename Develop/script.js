@@ -5,59 +5,56 @@ function generatePassword() {
   userPassword = "";
   passwordSet = "";
 
-  let passwordLength = prompt("Welcome! Please enter the number of characters you would like the password to be!");
-  let passwordUppercase = prompt("Do you want the password to contain uppercase characters? Enter 'y' or 'n'.");
-  let passwordLowercase = prompt("Do you want the password to contain lowercase characters? Enter 'y' or 'n'.");
-  let passwordNumeric = prompt("Do you want the password to contain numeric characters? Enter 'y' or 'n'.");
-  let passwordSpecial = prompt("Do you want the password to contain special characters? Enter 'y' or 'n'.");
+  // Variables used
+  const userLength = prompt("Welcome! Please enter the number of characters you would like the password to be!");
+  const passwordUppercase = prompt("Do you want the password to contain uppercase characters? Enter 'y' or 'n'.");
+  const passwordLowercase = prompt("Do you want the password to contain lowercase characters? Enter 'y' or 'n'.");
+  const passwordNumeric = prompt("Do you want the password to contain numeric characters? Enter 'y' or 'n'.");
+  const passwordSpecial = prompt("Do you want the password to contain special characters? Enter 'y' or 'n'.");
+  let passwordLength;
+  let passwordValue;
 
-  // possibly want to make an object with all of the arrays and a "randomness" function
-  // Math.floor(Math.random() * Characters.uppercase.length)
-  //  charAt()
+  const uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+  const numberCharacters = "0123456789";
+  const specialCharacters = "!@#$%^&*+?<>";
 
-  // let uppercaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-  // let lowercaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-  // let numberCharaters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-  // let specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "?", "<", ">"];
-
-  let uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  let lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
-  let numberCharaters = "0123456789";
-  let specialCharacters = "!@#$%^&*+?<>";
-
-  // Charaters = {
-  //   uppercase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
-  //   lowercase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
-  //   numbers: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
-  //   special: ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "?", "<", ">"],
-  // }
-  
-  if (passwordLength >= 8 && passwordLength <= 128) {
-    passwordValue = passwordLength;
-    alert(passwordValue);
+  // Takes a value for the desired character amount entered by the user and stores it into a variable
+  if (userLength >= 8 && userLength <= 128) {
+    passwordValue = userLength;
+  } else {
+    return ("Error enter a valid number!")
   }
-  else alert("Password length is NOT valid");
 
+  // Goes through a series of prompts selected by the user to select which character will be used in the password
   if (passwordUppercase === "y") {
-    passwordSet += uppercase;
-    alert(passwordSet);
+    passwordSet += uppercaseLetters;
   }
-  else alert("It will NOT contain uppercase characters");
 
   if (passwordLowercase === "y") {
-    alert("It will contain lowercase characters");
+    passwordSet += lowercaseLetters;
   }
-  else alert("It will NOT contain lowercase characters");
 
   if (passwordNumeric === "y") {
-    alert("It will contain numeric characters");
+    passwordSet += numberCharacters;
   }
-  else alert("It will NOT contain numeric characters");
 
   if (passwordSpecial === "y") {
-    alert("It will contain special characters");
+    passwordSet += specialCharacters;
   }
-  else alert("It will NOT contain special characters");
+  else {
+    return("Error! Please refresh page!")
+  }
+
+  // Parses the values from the user sections above into the desired "password" using the password length value inputed at the start
+  passwordLength = passwordValue;
+
+  for (let i = 0; i < passwordLength; i++) {
+    userPassword += passwordSet.charAt(
+      Math.floor(Math.random() * passwordSet.length));
+    
+  }
+  return userPassword;
 }
 
 // Write password to the #password input
