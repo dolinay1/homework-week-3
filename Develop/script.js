@@ -14,6 +14,7 @@ function generatePassword() {
   let passwordLength;
   let passwordValue;
 
+  // Variables that hold the character strings needed to go through the forloop below
   const uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
   const numberCharacters = "0123456789";
@@ -26,7 +27,7 @@ function generatePassword() {
     return ("Error enter a valid number!")
   }
 
-  // Goes through a series of prompts selected by the user to select which character will be used in the password
+  // Goes through a series of prompts selected by the user to select which characters will be used in the password
   if (passwordUppercase === "y") {
     passwordSet += uppercaseLetters;
   }
@@ -42,18 +43,18 @@ function generatePassword() {
   if (passwordSpecial === "y") {
     passwordSet += specialCharacters;
   }
+  // Failstate if the user selects "n" for all choices or skips the prompts by checking if the password set is empty
   else if(passwordSet === "") {
     return ("Error! Please refresh page!")
   }
  
 
-  // Parses the values from the user sections above into the desired "password" using the password length value inputed at the start
+  // Parses the values from the user prompts above into the desired "password" using the password length value inputed at the start
   passwordLength = passwordValue;
 
   for (let i = 0; i < passwordLength; i++) {
     userPassword += passwordSet.charAt(
       Math.floor(Math.random() * passwordSet.length));
-    
   }
   return userPassword;
 }
